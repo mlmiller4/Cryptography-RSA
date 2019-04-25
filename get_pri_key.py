@@ -6,13 +6,11 @@ def usage():
         python get_pri_key.py student_id (i.e., qchenxiong3)"""
     sys.exit(1)
 
-# TODO -- get n's factors
-# reminder: you can cheat ;-), as long as you can get p and q
+# Determine factors of n
 def get_factors(n):
     p = 0
     q = 0
-
-    # your code starts here
+    
     sqrRoot = math.floor(math.sqrt(n))
 
     i = int(sqrRoot)
@@ -25,22 +23,19 @@ def get_factors(n):
             break
 
         i = i-1
-
-    # your code ends here
+    
     return (p, q)
 
-# TODO: write code to get d from p, q and e
+# Get d from p, q and e using Extended Euclidean Algorithm function
 def get_key(p, q, e):
     d = 0
-
-    # your code starts here
+    
     phi_N = (p-1)*(q-1)
 
     g, x, y = egcd(e, phi_N)
 
     d = x % phi_N
-
-    # your code ends here
+    
     return d
 
 # Recursive implementation of the extended Euclidean algorithm for finding GCD
