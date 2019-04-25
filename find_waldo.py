@@ -6,19 +6,17 @@ def usage():
     python find_waldo.py student_id (i.e., qchenxiong3)"""
     sys.exit(1)
 
-#TODO -- n1 and n2 share p or q?
+# Determine whether n1 and n2 share p or q
 def is_waldo(n1, n2):
     result = False
-
-    #your code start here
+    
     GCD = find_gcd(n1, n2)
 
     my_q = n1 / GCD
     waldo_q = n2 / GCD
 
     if (GCD != 1):
-        result = True
-    #your code ends here
+        result = True    
 
     return result
 
@@ -41,11 +39,10 @@ def egcd(a, b):
 
     return (g, x - (b//a) * y, y)
 
-#TODO -- get private key of n1
+#Get private key of n1 by using Extended Euclidean Algorithm to determine Greatest Common Divisor (GCD)
 def get_private_key(n1, n2, e):
     d = 0
-
-    #your code starts here
+   
     p = find_gcd(n1, n2)
     q = n1 / p
 
@@ -53,8 +50,7 @@ def get_private_key(n1, n2, e):
 
     g, x, y = egcd(e, phi_N)
 
-    d = x % phi_N
-    #your code ends here
+    d = x % phi_N    
 
     return d
 
